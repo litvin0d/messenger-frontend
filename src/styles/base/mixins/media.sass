@@ -1,0 +1,22 @@
+// Миксин media позволяет создавать медиа-запросы для различных размеров экрана.
+// $minmax: Определяет тип медиа-запроса ("min" для min-width и "max" для max-width).
+// $media: Название медиа-запроса, соответствующее ключам в $breakpoints.
+// Внутри @content можно добавлять стили, применимые только в указанных медиа-запросах.
+
+// Пример использования миксина media для применения стилей только для экранов шире или равных размеру "tablet":
+// @include media("min", "tablet")
+//   // Ваши стили здесь
+
+@import "../functions/em"
+
+$breakpoints: ("mobile": 375, "mobile-xl": 480, "tablet": 768, "tablet-xl": 992, "laptop": 1024, "laptop-xl": 1280, "laptop-xxl": 1440, "container": 1295, "pc": 1600)
+
+@mixin media($minmax, $media)
+	@each $size, $resolution in $breakpoints
+		@if $media == $size
+			@if $minmax == "max"
+				@media (width <= em($resolution))
+					@content
+			@else
+				@media (min-width: calc(em($resolution) + 0.1px))
+					@content

@@ -1,0 +1,24 @@
+// Функция fluid создает значение с переменным размером, зависящим от размера экрана.
+// $min-size: Минимальное значение.
+// $max-size: Максимальное значение.
+// $min-breakpoint: Минимальное значение ширины экрана, при котором используется $min-size. По умолчанию 320px.
+// $max-breakpoint: Максимальное значение ширины экрана, при котором используется $max-size. По умолчанию 1920px.
+// $unit: Единица измерения, используемая для значения. По умолчанию vw (viewport width).
+// Возвращает значение с переменным размером, зависящим от размера экрана.
+
+// Пример использования функции fluid для создания значения с переменным размером:
+// font-size: fluid(14, 18); // Результат будет зависеть от размера экрана и будет варьироваться между 14rem и 18rem.
+
+@use "sass:math"
+
+@import "round-number"
+@import "rem"
+
+@function fluid($min-size, $max-size, $min-breakpoint: 320, $max-breakpoint: 1920, $unit: vw)
+	$slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint)
+	$slope-to-unit: round-number($slope * 100, 2)
+	$intercept-rem: round-number(rem($min-size - $slope * $min-breakpoint), 2)
+	$min-size-rem: round-number(rem($min-size), 2)
+	$max-size-rem: round-number(rem($max-size), 2)
+
+	@return clamp(#{$min-size-rem}, #{$slope-to-unit}#{$unit} + #{$intercept-rem}, #{$max-size-rem})

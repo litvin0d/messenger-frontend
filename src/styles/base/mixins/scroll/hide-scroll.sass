@@ -1,0 +1,13 @@
+// Миксин hide-scroll позволяет скрыть стандартный скроллбар.
+// Этот миксин применяет стили для скрытия скроллбара в различных браузерах (в том числе для WebKit).
+
+// Пример использования миксина hide-scroll для скрытия скроллбара:
+// .element
+//   @include hide-scroll()
+
+@mixin hide-scroll()
+	&::-webkit-scrollbar
+		display: none
+		width: 0
+		-webkit-appearance: none
+		appearance: none

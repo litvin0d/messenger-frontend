@@ -1,0 +1,25 @@
+// Миксин v-scroll позволяет настроить стили для вертикального скроллбара.
+// Этот миксин применяет кастомные стили к вертикальному скроллбару веб-страницы.
+// Стили определены для различных браузеров (в том числе для WebKit).
+
+// Пример использования миксина v-scroll для настройки стилей вертикального скроллбара:
+// .element
+//   @include v-scroll()
+
+@mixin v-scroll()
+	scrollbar-color: var(--color-primary-500) var(--color-neutral-300)
+	scrollbar-width: auto
+
+	&::-webkit-scrollbar
+		width: 6px
+		-webkit-appearance: none
+		appearance: none
+
+	&::-webkit-scrollbar-track
+		border-radius: 4px
+		background: var(--color-neutral-300)
+
+	&::-webkit-scrollbar-thumb
+		border: 2px solid var(--color-primary-500)
+		border-radius: 2px
+		background-color: var(--color-primary-500)

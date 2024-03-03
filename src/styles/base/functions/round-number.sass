@@ -1,0 +1,20 @@
+// Функция round-number округляет число до определенного количества десятичных знаков.
+// $number: Число для округления.
+// $decimals: Количество десятичных знаков. По умолчанию 0.
+// Возвращает округленное число.
+
+// Пример использования функции round-number для округления числа:
+// rounded-value: round-number(3.14159, 2); // Результат будет 3.14
+
+@use "sass:math"
+
+@function round-number($number, $decimals: 0)
+	$n: 1
+
+	@if $decimals > 0
+		@for $i from 1 through $decimals
+			$n: $n * 10
+
+		@return math.div(math.round($number * $n), $n)
+	@else
+		@return math.round($number)

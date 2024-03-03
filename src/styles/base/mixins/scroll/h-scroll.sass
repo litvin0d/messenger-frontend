@@ -1,0 +1,24 @@
+// Миксин h-scroll позволяет настроить стили для горизонтального скроллбара.
+// Этот миксин применяет кастомные стили к скроллбару веб-страницы.
+// Стили определены для различных браузеров (в том числе для WebKit).
+
+// Пример использования миксина h-scroll для настройки стилей горизонтального скроллбара:
+// .element
+//   @include h-scroll()
+
+@mixin h-scroll()
+	scrollbar-color: var(--color-primary-500) var(--color-neutral-300)
+	scrollbar-width: auto
+
+	&::-webkit-scrollbar
+		-webkit-appearance: none
+		appearance: none
+
+	&::-webkit-scrollbar-track
+		border-radius: 2px
+		background: var(--color-neutral-300)
+
+	&::-webkit-scrollbar-thumb
+		border: 3px solid var(--color-primary-500)
+		border-radius: 2px
+		background-color: var(--color-primary-500)

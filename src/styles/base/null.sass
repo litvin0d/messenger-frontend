@@ -1,0 +1,107 @@
+// Стили для сброса стандартных отступов и полей для всех элементов.
+*
+	margin: 0
+	padding: 0
+
+// Устанавливаем box-sizing: border-box для всех элементов и их псевдоэлементов.
+*,
+*::before,
+*::after
+	box-sizing: border-box
+
+// Устанавливаем прозрачный цвет выделенного текста.
+*::selection
+	-webkit-tap-highlight-color: transparent
+
+// Дополнительные стили для body.
+body
+	-webkit-text-size-adjust: 100%
+
+// Определяем основные блочные элементы.
+aside, nav, footer, header, section, main
+	display: block
+
+// Удаляем стандартное оформление списков.
+ul, ul li, ol, ol li
+	list-style: none
+
+// Устанавливаем стили для ссылок.
+a:not([class])
+	&:link,
+	&:visited,
+	&:hover
+		text-decoration: none
+
+// Устанавливаем стили для изображений, видео, SVG и iframe.
+img,
+svg,
+video,
+iframe
+	display: block
+	max-width: 100%
+	height: auto
+	background-repeat: no-repeat
+	background-size: cover
+
+// Устанавливаем стили для элемента address.
+address
+	font-style: normal
+
+// Устанавливаем стили для формных элементов.
+input, textarea, button, select
+	background-color: transparent
+	color: inherit
+	font-family: inherit
+	font-size: inherit
+
+// Скрываем кнопку очистки ввода для элемента input.
+input::-ms-clear
+	display: none
+
+// Устанавливаем стили для кнопок и кнопок отправки форм.
+button, input[type="submit"]
+	display: inline-block
+	background: transparent none
+	box-shadow: none
+	cursor: pointer
+
+// Удаляем стандартный фокусовой контур для активных элементов.
+input:focus, input:active,
+button:focus, button:active,
+textarea:focus, textarea:active
+	outline: none
+
+// Удаляем стандартный фокусовой контур для кнопок в Firefox.
+button::-moz-focus-inner
+	padding: 0
+	border: 0
+
+// Удаляем стандартные границы для кнопок.
+button
+	border: none
+
+// Удаляем стандартный фокусовой контур для ссылок.
+a
+	&:focus
+		outline: none
+
+	// Устанавливаем кастомный фокусовый контур для ссылок.
+	&:focus-visible
+		outline: 2px solid var(--color-primary-300)
+		outline-offset: 3px
+
+	// Отменяем перенос телефонных ссылок.
+	&[href^="tel"]
+		white-space: nowrap
+
+	// Устанавливаем отступ фокусового контура для ссылок в Chrome.
+	&-webkit-any-link:focus-visible
+		outline-offset: 0
+
+// Устанавливаем курсор указателя для элемента label.
+label
+	cursor: pointer
+
+// Устанавливаем стили для элемента legend.
+legend
+	display: block

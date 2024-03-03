@@ -1,0 +1,73 @@
+// Базовые стили для веб-страницы.
+
+@use "sass:math"
+
+@import "functions/em"
+@import "mixins/media"
+@import "mixins/scroll/v-scroll"
+
+// Устанавливаем базовый размер шрифта и стиль прокрутки страницы.
+html
+	font-size: calc(16 / 1920) * 100vw
+	scroll-behavior: smooth
+
+	// Медиа-запросы для различных размеров устройств.
+	@include media('max', 'pc')
+		font-size: calc(16 / 1600) * 100vw
+
+	@include media('max', 'laptop-xxl')
+		font-size: calc(16 / 1440) * 100vw
+
+	@include media('max', 'laptop')
+		font-size: calc(16 / 1024) * 100vw
+
+	@include media('max', 'tablet')
+		font-size: calc(16 / 768) * 100vw
+
+	@include media('max', 'mobile-xl')
+		font-size: calc(16 / 375) * 100vw
+
+	// Дополнительный медиа-запрос для устройств с шириной до 320px.
+	@media (width <= em(320))
+		font-size: calc(16 / 320) * 100vw
+
+	// Применяем стили для вертикального скроллбара.
+	@include v-scroll
+
+// Устанавливаем высоту на 100%, минимальную ширину страницы, отступы, цвет фона и шрифта для html и body.
+html,
+body
+	height: 100%
+	min-width: var(--page-min-width)
+	margin: 0 auto
+	background-color: var(--color-white)
+	color: var(--color-black)
+	font-family: var(--font-family)
+	font-size: var(--font-size)
+	font-weight: var(--font-weight)
+
+	// При активации модального окна блокируем прокрутку страницы и компенсируем ширину скроллбара.
+	&.modal-lock
+		padding-right: var(--scrollbar-compensate, 0)
+		overflow: hidden
+
+// Устанавливаем стили для выделенного текста.
+*::selection
+	background-color: var(--color-primary-300)
+	color: var(--color-neutral-900)
+	-webkit-tap-highlight-color: transparent
+
+// Блокируем прокрутку элемента с классом .scroll-lock.
+.scroll-lock
+	overflow: hidden
+
+// Устанавливаем стили для основного контейнера страницы.
+.layout
+	display: flex
+	flex-direction: column
+	min-height: 100%
+
+// Определяем стили для контейнера, ограничивающего ширину содержимого и выравнивающего его по центру страницы.
+.wrapper
+	width: min(calc(100% - var(--wrapper-padding)), var(--wrapper-max-width))
+	margin-inline: auto

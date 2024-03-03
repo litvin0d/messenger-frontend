@@ -1,0 +1,13 @@
+// Миксин out-wrapper позволяет создать контейнер, выходящий за пределы обычной ширины страницы.
+// Этот миксин определяет стили для контейнера, который расширяется за пределы ширины страницы на величину отступов обёртки.
+
+// Пример использования миксина out-wrapper для создания контейнера, выходящего за пределы обычной ширины страницы:
+// .element
+//   @include out-wrapper()
+
+@mixin out-wrapper()
+	width: calc(100% + var(--wrapper-padding) * 2)
+	margin-right: calc(-1 * var(--wrapper-padding))
+	margin-left: calc(-1 * var(--wrapper-padding))
+	padding-right: var(--wrapper-padding)
+	padding-left: var(--wrapper-padding)
