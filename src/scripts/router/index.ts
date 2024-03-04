@@ -18,6 +18,14 @@ const routes: RouteRecordRaw[] = [
 			name: 'Login',
 		},
 	},
+	{
+		path: '/signup',
+		name: 'SignUp',
+		component: () => import('@/views/SignUpView.vue'),
+		meta: {
+			name: 'SignUp',
+		},
+	},
 ];
 
 const router = createRouter({

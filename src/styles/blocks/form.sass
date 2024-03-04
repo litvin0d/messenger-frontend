@@ -1,14 +1,26 @@
 @import "@/styles/base/functions/rem"
 
 .form
+	display: flex
+	flex-direction: column
+
+	&__section
+		display: flex
+		flex-direction: column
+		margin-bottom: rem(8)
+
+		&--inline
+			justify-content: center
+			align-items: center
+			flex-direction: row
+			gap: rem(24)
+
 	&__label
 		display: flex
 		user-select: none
 		align-items: center
 		justify-content: space-between
 		padding: rem(8)
-
-	&__label-text
 		font-size: rem(14)
 		line-height: rem(20)
 
@@ -38,17 +50,51 @@
 			cursor: not-allowed
 			pointer-events: none
 
+	&__radio
+		display: flex
+		align-items: center
+
+	&__radio-input
+		display: grid
+		place-items: center
+		-webkit-appearance: none
+		appearance: none
+		background-color: transparent
+		margin: 0
+		font: inherit
+		color: currentColor
+		width: rem(18)
+		height: rem(18)
+		border: 2px solid var(--color-primary-600)
+		border-radius: 50%
+
+		&::before
+			content: ""
+			width: rem(10)
+			height: rem(10)
+			border-radius: 50%
+			transform: scale(0)
+			transition: transform .2s ease-in-out
+			background-color: var(--color-primary-600)
+
+		&:checked::before
+			transform: scale(1)
+
+		&:focus
+			outline: 2px solid var(--color-neutral-500)
+			outline-offset: 2px
+
 	&__question
-		display: inline-flex
-		justify-content: center
-		width: 100%
+		text-align: center
 		margin: rem(16) 0
 
 		font-size: rem(14)
 		line-height: rem(20)
 
+	&__question-link
+		color: var(--color-primary-500)
+
 		&:hover
-			color: var(--color-primary-500)
 			text-decoration-line: underline
 
 	&__submit
@@ -62,7 +108,6 @@
 		background-color: var(--color-primary-600)
 		border-radius: rem(8)
 		outline-color: var(--color-neutral-500)
-
 
 		text-align: center
 		font-size: rem(14)

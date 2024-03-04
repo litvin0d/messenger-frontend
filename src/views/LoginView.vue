@@ -15,24 +15,19 @@ import { RouterLink } from 'vue-router';
 					<label class="form__label" for="username">
 						<span class="form__label-text">Username</span>
 					</label>
-					<input
-						class="form__input"
-						name="username"
-						type="text"
-						placeholder="Enter username"
-					>
+					<input class="form__input" name="username" type="text" placeholder="Enter username" />
 					<label class="form__label" for="username">
 						<span class="form__label-text">Password</span>
 					</label>
-					<input
-						class="form__input"
-						name="password"
-						type="password"
-						placeholder="Enter password"
-					>
+					<input class="form__input" name="password" type="password" placeholder="Enter password" />
 				</div>
 
-				<router-link class="form__question" to="/signup">Don't have an account?</router-link>
+				<div class="form__section">
+					<span class="form__question">
+						Don't have an account?
+						<router-link class="form__question-link" to="/signup">Sign Up</router-link>
+					</span>
+				</div>
 
 				<div class="form__section">
 					<button class="form__submit">Login</button>
