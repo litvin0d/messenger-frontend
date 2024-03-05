@@ -12,13 +12,9 @@ import { RouterLink } from 'vue-router';
 
 			<form class="login__form form">
 				<div class="form__section">
-					<label class="form__label" for="username">
-						<span class="form__label-text">Username</span>
-					</label>
+					<label class="form__label" for="username">Username</label>
 					<input class="form__input" name="username" type="text" placeholder="Enter username" />
-					<label class="form__label" for="username">
-						<span class="form__label-text">Password</span>
-					</label>
+					<label class="form__label" for="username">Password</label>
 					<input class="form__input" name="password" type="password" placeholder="Enter password" />
 				</div>
 

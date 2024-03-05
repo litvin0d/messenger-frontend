@@ -1,25 +1,32 @@
 <script setup lang="ts">
-import ConversationItem from '@/components/sidebar/ConversationItem.vue';
+import MessageItem from '@/components/messages/MessageItem.vue';
 </script>
 
 <template>
-	<div class="conversations-list">
-		<conversation-item />
-		<conversation-item />
-		<conversation-item />
-		<conversation-item />
-		<conversation-item />
+	<div class="messages-list">
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
+		<message-item />
 	</div>
 </template>
 
 <style scoped lang="sass">
 @import "@/styles/base/functions/rem.sass"
 
-.conversations-list
-	display: flex
-	flex-direction: column
-	padding: rem(8) 0 rem(64)
+.messages-list
+	flex: 1 1 0
 	overflow-y: auto
+	padding-bottom: rem(80)
 
 	scrollbar-color: var(--color-neutral-500) var(--color-neutral-600)
 	scrollbar-width: thin

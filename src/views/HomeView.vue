@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import SidebarComponent from '@/components/sidebar/SidebarComponent.vue';
+import MessageContainer from '@/components/messages/MessageContainer.vue';
 </script>
 
 <template>
 	<div class="home">
 		<sidebar-component />
+		<message-container />
 	</div>
 </template>
 

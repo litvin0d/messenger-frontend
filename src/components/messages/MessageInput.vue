@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import IconSearch from '@/components/icons/IconSearch.vue';
+import IconSend from '@/components/icons/IconSend.vue';
 </script>
 
 <template>
-	<form class="search">
-		<input class="search__input" type="search" inputmode="search" placeholder="Search..." />
-		<button class="search__button" disabled>
-			<icon-search class="search__icon" />
+	<form class="message-input">
+		<input class="message-input__input" type="text" inputmode="text" placeholder="Send a message" />
+		<button class="message-input__button" disabled>
+			<icon-send class="message-input__icon" />
 		</button>
 	</form>
 </template>
@@ -14,7 +14,13 @@ import IconSearch from '@/components/icons/IconSearch.vue';
 <style scoped lang="sass">
 @import "@/styles/base/functions/rem.sass"
 
-.search
+.message-input
+	position: absolute
+	left: rem(16)
+	right: rem(16)
+	bottom: rem(16)
+	z-index: 10
+
 	display: flex
 	align-items: center
 	gap: rem(8)
@@ -24,7 +30,7 @@ import IconSearch from '@/components/icons/IconSearch.vue';
 		flex-shrink: 1
 		height: rem(48)
 		padding: 0 rem(16)
-		appearance: textfield
+		appearance: none
 
 		background-color: var(--color-neutral-700)
 		border: 1px solid var(--color-neutral-600)
@@ -32,9 +38,6 @@ import IconSearch from '@/components/icons/IconSearch.vue';
 
 		font-size: rem(14)
 		line-height: rem(20)
-
-		&::-webkit-search-cancel-button, &::-webkit-search-decoration
-			appearance: none
 
 		&:focus, &:focus-within
 			box-shadow: none
@@ -85,4 +88,5 @@ import IconSearch from '@/components/icons/IconSearch.vue';
 		width: 100%
 		height: 100%
 		outline-color: transparent
+		transform: translateY(5%)
 </style>

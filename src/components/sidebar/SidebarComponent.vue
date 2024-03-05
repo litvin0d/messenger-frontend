@@ -5,12 +5,12 @@ import LogoutButton from '@/components/sidebar/LogoutButton.vue';
 </script>
 
 <template>
-	<div class="sidebar">
+	<aside class="sidebar">
 		<search-input />
-		<div class="sidebar__divider" />
+		<hr class="sidebar__divider" />
 		<conversations-list />
 		<logout-button />
-	</div>
+	</aside>
 </template>
 
 <style scoped lang="sass">
@@ -21,7 +21,7 @@ import LogoutButton from '@/components/sidebar/LogoutButton.vue';
 
 	display: flex
 	flex-direction: column
-	padding: rem(16)
+	padding: rem(16) rem(16) 0 rem(16)
 	border-right: 1px solid var(--color-neutral-500)
 
 	&__divider
@@ -33,7 +33,6 @@ import LogoutButton from '@/components/sidebar/LogoutButton.vue';
 		margin-bottom: rem(16)
 		height: rem(16)
 		white-space: nowrap
-		padding: 0 rem(12)
 
 		&::before, &::after
 			content: ''

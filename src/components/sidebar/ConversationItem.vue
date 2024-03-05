@@ -69,5 +69,5 @@
 		flex: 1 1 0
 
 	&__name
-		font-weight: 700
+		font-weight: 600
 </style>
