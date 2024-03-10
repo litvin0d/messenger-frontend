@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 
 interface ISubmitData {
 	fullName: string;
@@ -18,6 +18,7 @@ const submitData: ISubmitData = reactive({
 	gender: '',
 });
 
+const router = useRouter()
 const errorMessage = ref('');
 const isLoading = ref<boolean>(false);
 
@@ -60,13 +61,16 @@ const handleSubmit = async () => {
 				body: JSON.stringify(submitData),
 			});
 
-			console.log(res)
-
 			const data = await res.json();
-			console.log(data)
-		} catch (error) {
-			console.error(error)
 
+			if (data.error)
+				errorMessage.value = data.error;
+			else {
+				localStorage.setItem('user', JSON.stringify(data));
+				await router.push({ name: 'Home' })
+			}
+
+		} catch (error) {
 			if (error instanceof Error)
 				errorMessage.value = error.message;
 		} finally {
@@ -156,7 +160,7 @@ const handleSubmit = async () => {
 				<div class="form__section">
 					<span class="form__question">
 						Already have an account?
-						<router-link class="form__question-link" to="/signup">Login</router-link>
+						<router-link class="form__question-link" to="/login">Login</router-link>
 					</span>
 				</div>
 

@@ -9,6 +9,7 @@ const routes: RouteRecordRaw[] = [
 		meta: {
 			name: 'Home',
 		},
+
 	},
 	{
 		path: '/login',
@@ -38,5 +39,13 @@ router.beforeResolve((to, _, next) => {
 
 	next();
 });
+
+router.beforeEach((to, from, next) => {
+	const user = localStorage.getItem('user');
+
+	if ((to.name === 'SignUp' || to.name === 'Login') && user) next({ name: 'Home' });
+	else if (to.name === 'Home' && !user) next({ name: 'Login' });
+	else next();
+})
 
 export default router;
