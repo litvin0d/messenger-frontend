@@ -17,6 +17,11 @@ export default defineConfig(({ mode }) => {
 		server: {
 			host: '0.0.0.0',
 			port: BASE_PORT,
+			proxy: {
+				'/api': {
+					target: 'http://localhost:1234',
+				}
+			},
 		},
 		root: SOURCE_DIR,
 		envDir: '../',

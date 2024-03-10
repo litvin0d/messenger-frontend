@@ -48,7 +48,6 @@
 
 		&.disabled, &:disabled, &[disabled]
 			cursor: not-allowed
-			pointer-events: none
 
 	&__radio
 		display: flex
@@ -125,4 +124,6 @@
 
 		&.disabled, &[disabled], &:disabled
 			cursor: not-allowed
-			pointer-events: none
+
+			&:hover
+				background-color: var(--color-primary-600)
