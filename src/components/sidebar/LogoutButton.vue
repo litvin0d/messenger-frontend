@@ -1,9 +1,38 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
 import IconLogout from '@/components/icons/IconLogout.vue';
+
+const router = useRouter();
+const isLoading = ref<boolean>(false);
+
+const logout = async () => {
+	isLoading.value = true;
+
+	try {
+		const res = await fetch('/api/auth/logout', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' }
+		});
+
+		const data = await res.json();
+
+		if (!data.error) {
+			localStorage.removeItem('user');
+			await router.push({ name: 'Login' });
+		}
+	} catch (error) {
+		if (error instanceof Error)
+			throw error;
+	} finally {
+		isLoading.value = false;
+	}
+}
 </script>
 
 <template>
-	<button class="logout">
+	<button @click="logout" class="logout" :disabled="isLoading">
 		<icon-logout class="logout__icon" />
 	</button>
 </template>
@@ -41,6 +70,10 @@ import IconLogout from '@/components/icons/IconLogout.vue';
 
 	&.disabled, &[disabled], &:disabled
 		cursor: not-allowed
+		opacity: .5
+
+		&:hover
+			background-color: var(--color-neutral-400)
 
 	&__icon
 		max-width: rem(24)
