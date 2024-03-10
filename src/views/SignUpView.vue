@@ -18,7 +18,7 @@ const submitData: ISubmitData = reactive({
 	gender: '',
 });
 
-const router = useRouter()
+const router = useRouter();
 const errorMessage = ref('');
 const isLoading = ref<boolean>(false);
 
@@ -67,9 +67,8 @@ const handleSubmit = async () => {
 				errorMessage.value = data.error;
 			else {
 				localStorage.setItem('user', JSON.stringify(data));
-				await router.push({ name: 'Home' })
+				await router.push({ name: 'Home' });
 			}
-
 		} catch (error) {
 			if (error instanceof Error)
 				errorMessage.value = error.message;
