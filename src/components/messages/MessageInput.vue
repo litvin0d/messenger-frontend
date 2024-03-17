@@ -1,11 +1,24 @@
 <script setup lang="ts">
 import IconSend from '@/components/icons/IconSend.vue';
+import { ref } from 'vue';
+
+const message = ref('')
+const errorMessage = ref('')
+
+const sendMessage = () => {
+	try {
+		// will do
+	} catch (error) {
+		if (error instanceof Error)
+			errorMessage.value = error.message;
+	}
+}
 </script>
 
 <template>
-	<form class="message-input">
-		<input class="message-input__input" type="text" inputmode="text" placeholder="Send a message" />
-		<button class="message-input__button" disabled>
+	<form @submit.prevent="sendMessage" class="message-input">
+		<input v-model="message" class="message-input__input" type="text" inputmode="text" placeholder="Send a message" />
+		<button class="message-input__button" :disabled="!message">
 			<icon-send class="message-input__icon" />
 		</button>
 	</form>

@@ -1,16 +1,47 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { type IConversation, useConversation } from '@/scripts/store/conversation';
+import { computed, type PropType } from 'vue';
+
+const props = defineProps({
+	conversation: {
+		type: Object as PropType<IConversation>,
+		required: true,
+	},
+	avatarImg: {
+		type: String,
+		required: true,
+	},
+	name: {
+		type: String,
+		required: true,
+	},
+})
+
+const conversationStore = useConversation();
+
+const selectConversation = () => {
+	if (props.conversation)
+		conversationStore.setSelectedConversation(props.conversation)
+}
+
+// const isActive = computed(() => {
+// 	const selectedConvId = conversationStore.selectedConversation?.id
+// 	const convId = props.conversation?.id
+// 	return selectedConvId === convId;
+// });
+</script>
 
 <template>
-	<div class="conversation-item">
+	<div :class="['conversation-item']" @click="selectConversation">
 		<div class="conversation-item__avatar online">
 			<img
 				class="conversation-item__avatar-img"
-				src="https://avatar.iran.liara.run/public/boy?username=string"
+				:src="props.avatarImg"
 				alt="Profile Picture"
 			/>
 		</div>
 		<div class="conversation-item__title">
-			<p class="conversation-item__name">Some name</p>
+			<p class="conversation-item__name">{{ props.name }}</p>
 		</div>
 	</div>
 </template>
@@ -70,4 +101,7 @@
 
 	&__name
 		font-weight: 600
+
+	&--active
+		background-color: var(--color-neutral-500)
 </style>

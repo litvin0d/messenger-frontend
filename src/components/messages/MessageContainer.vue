@@ -1,16 +1,22 @@
 <script setup lang="ts">
-// import NoChat from '@/components/messages/NoChat.vue';
+import NoChat from '@/components/messages/NoChat.vue';
 import MessageHeader from '@/components/messages/MessageHeader.vue';
 import MessagesList from '@/components/messages/MessagesList.vue';
 import MessageInput from '@/components/messages/MessageInput.vue';
+import { useConversation } from '@/scripts/store/conversation';
+import { onUnmounted } from 'vue';
+
+const conversationStore = useConversation();
+
+onUnmounted(() => conversationStore.setSelectedConversation(null))
 </script>
 
 <template>
 	<div class="message-container">
-		<!--<no-chat />-->
-		<message-header />
-		<messages-list />
-		<message-input />
+		<no-chat v-if="!conversationStore.selectedConversation" />
+		<message-header v-if="conversationStore.selectedConversation" :name="conversationStore.selectedConversation.fullName" />
+		<messages-list v-if="conversationStore.selectedConversation" />
+		<message-input v-if="conversationStore.selectedConversation" />
 	</div>
 </template>
 

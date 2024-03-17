@@ -1,8 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+	name: {
+		type: String,
+		required: true,
+	}
+})
+</script>
 
 <template>
 	<div class="message-header">
-		<span class="message-header__name">Some name</span>
+		<span class="message-header__name">{{ name }}</span>
 		<span class="message-header__status message-header__status--online">online</span>
 	</div>
 </template>
